@@ -1,5 +1,5 @@
 import { CreateTaskDto } from './dto/create-task.dto';
-import { Task } from './task.model';
+import { Task, TaskStatus } from './task.model';
 import { TasksService } from './tasks.service';
 import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 
@@ -30,7 +30,7 @@ export class TasksController {
   }
 
   @Patch('/:id/status')
-  updateTaskStatusById(@Param('id') id: string, @Body('status') status) : void {
+  updateTaskStatusById(@Param('id') id: string, @Body('status') status : TaskStatus) : void {
     this.tasksService.updateTaskStatusById(id, status);
   }
 }
